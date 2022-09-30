@@ -85,7 +85,7 @@ export default class BST {
         const insert_value = (node: BinaryNode<number>, value: number): void => {
             if (value <= node.value) {
                 if (!node.left) {
-                    node.left = this.create_node(value)
+                    node.left = this.create_node(value, node)
                 }
                 else {
                     insert_value(node.left, value)
@@ -93,7 +93,7 @@ export default class BST {
             }
             else if (node.value < value) {
                 if (!node.right) {
-                    node.right = this.create_node(value)
+                    node.right = this.create_node(value, node)
                 }
                 else {
                     insert_value(node.right, value)
@@ -127,10 +127,10 @@ export default class BST {
 
     }
 
-    private create_node(value: number): BinaryNode<number> {
+    private create_node(value: number, parent: BinaryNode<number>): BinaryNode<number> {
         return {
             value: value,
-            parent: null,
+            parent: parent,
             left: null,
             right: null
         }

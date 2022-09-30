@@ -30,6 +30,12 @@ test('bst', () => {
     bst.insert(255)
     found = bst.find(255)
     expect(found).not.toEqual(null)
+
+    bst.delete(bst.head.left)
+    bst.delete(bst.head.right)
+
+    const is_valid_after_insert_delete = bst.validate()
+    expect(is_valid_after_insert_delete).toEqual(true)
     // console.debug(bst.toString())
 })
 
